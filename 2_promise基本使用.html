@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+  const p = new Promise((resolve,reject)=>{  // 执行器函数
+
+    setTimeout(()=>{
+      const time = Date.now()
+      if (time %2 == 0) resolve('这是成功的数据' + time)
+      else reject('这是失败的数据' + time)
+      
+    },3000)
+
+  })
+
+  p.then(
+    value =>{                          //onResolved
+      console.log('成功回调：',value)
+    console.log(p);
+
+    },
+    reason =>{                          //onRejected
+      console.log('失败回调：',reason)
+    console.log(p);
+    }
+  )
+
+  console.log(p);
+
+//   Promise.resolve().then(function promise1 () {
+//        console.log('promise1');
+//     })
+// setTimeout(function setTimeout1 (){
+//     console.log('setTimeout1')
+//     Promise.resolve().then(function  promise2 () {
+//        console.log('promise2');
+//     })
+// }, 0)
+
+// setTimeout(function setTimeout2 (){
+//    console.log('setTimeout2')
+// }, 0)
+  </script>
+</body>
+</html>
